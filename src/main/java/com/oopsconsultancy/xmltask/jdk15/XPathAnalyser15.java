@@ -4,6 +4,7 @@ import org.w3c.dom.*;
 import org.w3c.dom.traversal.*;
 import com.oopsconsultancy.xmltask.*;
 import javax.xml.xpath.*;
+import java.lang.reflect.Method;
 
 /**
  * uses the JDK 1.5 XPath API
@@ -19,13 +20,15 @@ public class XPathAnalyser15 implements XPathAnalyser {
   private XPathFactory g_xpathFactory;
   private XPath m_xpath;
 
-  public XPathAnalyser15(final String xpathObjectModelUri)
+  public XPathAnalyser15(final String xpathFactory, final String xpathObjectModelUri)
   {
     if (g_xpathFactory == null)
     {
         try
         {
-            g_xpathFactory = XPathFactory.newInstance(xpathObjectModelUri);
+            final Class<XPathFactory> clazz = (Class<XPathFactory>) Class.forName(xpathFactory);
+            final Method method = clazz.getMethod("newInstance", String.class);
+            g_xpathFactory = (XPathFactory) method.invoke(null, xpathObjectModelUri);
         }
         catch (Exception e)
         {

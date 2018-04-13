@@ -66,7 +66,7 @@ public class XmlReplace implements XPathAnalyserClient {
 
     action.setDocument(doc);
 
-    XPathAnalyser xpa = XPathAnalyserFactory.getAnalyser(task.getXpathObjectModelUri());
+    XPathAnalyser xpa = XPathAnalyserFactory.getAnalyser(task.getXpathFactory(), task.getXpathObjectModelUri());
     xpa.registerClient(this, null);
 
     // clear the nodes from the last invocation

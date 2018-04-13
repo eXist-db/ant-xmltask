@@ -14,10 +14,10 @@ import java.lang.reflect.Constructor;
  */
 public class XPathAnalyserFactory {
 
-  public static XPathAnalyser getAnalyser(final String xpathObjectModelUri) throws Exception {
+  public static XPathAnalyser getAnalyser(final String xpathFactory, final String xpathObjectModelUri) throws Exception {
 
     final Class<XPathAnalyser> clazz = (Class<XPathAnalyser>) Class.forName("com.oopsconsultancy.xmltask.jdk15.XPathAnalyser15");
-    final Constructor<XPathAnalyser> cstr = clazz.getConstructor(String.class);
-    return cstr.newInstance(xpathObjectModelUri);
+    final Constructor<XPathAnalyser> cstr = clazz.getConstructor(String.class, String.class);
+    return cstr.newInstance(xpathFactory, xpathObjectModelUri);
   }
 }

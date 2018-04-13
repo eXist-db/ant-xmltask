@@ -52,6 +52,7 @@ public class XmlTask extends Task {
   private boolean preservetype = false;
   private boolean failWithoutMatch = false;
   private String[] buffers = new String[]{};
+  private String xpathFactory = XPathFactory.class.getName();
   private String xpathObjectModelUri = XPathFactory.DEFAULT_OBJECT_MODEL_URI;
 
   private final List filesets = new ArrayList();
@@ -567,7 +568,15 @@ public class XmlTask extends Task {
     this.xpathObjectModelUri = xpathObjectModelUri;
   }
 
-  /**
+  public String getXpathFactory() {
+    return xpathFactory;
+  }
+
+  public void setXpathFactory(String xpathFactory) {
+    this.xpathFactory = xpathFactory;
+  }
+
+    /**
    * derives and returns the version number
    *
    * @return a string with the version info
