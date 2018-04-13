@@ -19,13 +19,13 @@ public class XPathAnalyser15 implements XPathAnalyser {
   private XPathFactory g_xpathFactory;
   private XPath m_xpath;
 
-  public XPathAnalyser15()
+  public XPathAnalyser15(final String xpathObjectModelUri)
   {
     if (g_xpathFactory == null)
     {
         try
         {
-            g_xpathFactory = XPathFactory.newInstance(XPathFactory.DEFAULT_OBJECT_MODEL_URI);
+            g_xpathFactory = XPathFactory.newInstance(xpathObjectModelUri);
         }
         catch (Exception e)
         {

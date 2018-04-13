@@ -52,6 +52,7 @@ public class XmlTask extends Task {
   private boolean preservetype = false;
   private boolean failWithoutMatch = false;
   private String[] buffers = new String[]{};
+  private String xpathObjectModelUri = XPathFactory.DEFAULT_OBJECT_MODEL_URI;
 
   private final List filesets = new ArrayList();
 
@@ -556,6 +557,14 @@ public class XmlTask extends Task {
    */
   public void setIndent(final boolean in) {
     this.indent = in;
+  }
+
+  public String getXpathObjectModelUri() {
+    return xpathObjectModelUri;
+  }
+
+  public void setXpathObjectModelUri(final String xpathObjectModelUri) {
+    this.xpathObjectModelUri = xpathObjectModelUri;
   }
 
   /**

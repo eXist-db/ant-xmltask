@@ -1,6 +1,8 @@
 package com.oopsconsultancy.xmltask;
 
 import java.util.*;
+
+import com.oopsconsultancy.xmltask.ant.XmlTask;
 import org.w3c.dom.*;
 import org.apache.tools.ant.*;
 
@@ -20,7 +22,7 @@ public class XmlReplace implements XPathAnalyserClient {
 
   private final Action action;
 
-  private Task task = null;
+  private XmlTask task = null;
 
   private final List nodes = new ArrayList();
 
@@ -33,7 +35,7 @@ public class XmlReplace implements XPathAnalyserClient {
     this.action = action;
   }
 
-  public void setTask(final Task task) {
+  public void setTask(final XmlTask task) {
     this.task = task;
   }
 
@@ -64,7 +66,7 @@ public class XmlReplace implements XPathAnalyserClient {
 
     action.setDocument(doc);
 
-    XPathAnalyser xpa = XPathAnalyserFactory.getAnalyser();
+    XPathAnalyser xpa = XPathAnalyserFactory.getAnalyser(task.getXpathObjectModelUri());
     xpa.registerClient(this, null);
 
     // clear the nodes from the last invocation
